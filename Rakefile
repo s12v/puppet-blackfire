@@ -16,3 +16,6 @@ task :validate do
     sh "erb -P -x -T '-' #{template} | ruby -c"
   end
 end
+
+desc 'Run all tests on Travis'
+task travis: %w(validate lint spec)

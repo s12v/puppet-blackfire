@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/s12v/puppet-blackfire.svg?branch=master)](https://travis-ci.org/s12v/puppet-blackfire)
+
 # blackfire
 
 #### Table of Contents

@@ -1,0 +1,6 @@
+fixtures:
+  forge: "https//forge.puppetlabs.com"
+  repositories:
+    stdlib: "git://github.com/puppetlabs/puppetlabs-stdlib.git"
+  symlinks:
+    blackfire: "#{source_dir}"

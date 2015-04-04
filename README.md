@@ -17,65 +17,90 @@
 
 ## Overview
 
-A one-maybe-two sentence summary of what the module does/what problem it solves.
-This is your 30 second elevator pitch for your module. Consider including
-OS/Puppet version it works with.
+The blackfire module installs, configures, and manages the [Blackfire](https://blackfire.io/) PHP profiler.
 
 ## Module Description
 
-If applicable, this section should have a brief description of the technology
-the module integrates with and what that integration enables. This section
-should answer the questions: "What does this module *do*?" and "Why would I use
-it?"
-
-If your module has a range of functionality (installation, configuration,
-management, etc.) this is the time to mention it.
+The blackfire module handles installing, configuring, and running Blackfire Agent and Probe (PHP extension) across a range of operating systems and distributions.
 
 ## Setup
 
-### What blackfire affects
-
-* A list of files, packages, services, or operations that the module will alter,
-  impact, or execute on the system it's installed on.
-* This is a great place to stick any warnings.
-* Can be in list or paragraph form.
-
-### Setup Requirements **OPTIONAL**
-
-If your module requires anything extra before setting up (pluginsync enabled,
-etc.), mention it here.
-
 ### Beginning with blackfire
 
-The very basic steps needed for a user to get the module up and running.
+Agent and php extension can be installed separately.
+You need to provide at least `server_id` and `server_token` parameters, therefore
+minimum configuration for agent and php looks like this:
+```puppet
+class { 'blackfire':
+	server_id    => 'b54114a9-df8a-563b-8ba3-e5457155010e',
+	server_token => '7315b1cf617bf51575ba463e813156ed97c85d8ca5c5691db37bbfe36a622a4f'
+}
+include 'blackfire::agent'
+include 'blackfire::php'
+```
 
-If your most recent release breaks compatibility or requires particular steps
-for upgrading, you may wish to include an additional section here: Upgrading
-(For an example, see http://forge.puppetlabs.com/puppetlabs/firewall).
-
-## Usage
-
-Put the classes, types, and resources for customizing, configuring, and doing
-the fancy stuff with your module here.
+You can provide additional parameters to `blackfire::agent` and `blackfire::php`:
+```puppet
+class { 'blackfire':
+	server_id    => 'b54114a9-df8a-563b-8ba3-e5457155010e',
+	server_token => '7315b1cf617bf51575ba463e813156ed97c85d8ca5c5691db37bbfe36a622a4f'
+}
+class { 'blackfire::agent':
+  `log_file`     => '/var/log/blackfire-agent.log'
+}
+class { 'blackfire::php':
+  `log_file`     => '/var/log/blackfire-php.log'
+}
+```
 
 ## Reference
 
-Here, list the classes, types, providers, facts, etc contained in your module.
-This section should include all of the under-the-hood workings of your module so
-people know what the module is touching on their system but don't need to mess
-with things. (We are working on automating this section!)
+### Classes
 
-## Limitations
+#### Public classes
 
-This is where you list OS compatibility, version compatibility, etc.
+`blackfire`: Main class, validates common configuration parameters
+`blackfire::agent`: Manages the Agent
+`blackfire::php`: Manages the PHP extenstion (Probe)
 
-## Development
+#### Private classes
+`blackfire::repo`: Handles the repository.
+`blackfire::agent::install`: Handles the packages.
+`blackfire::agent::config`: Handles the configuration file.
+`blackfire::agent::service`: Handles the service.
+`blackfire::php::install`: Handles the packages.
+`blackfire::php::config`: Handles the configuration file.
 
-Since your module is awesome, other users will want to play with it. Let them
-know what the ground rules for contributing are.
+### Parameters
 
-## Release Notes/Contributors/Etc **Optional**
+#### Available parameters for blackfire class
+`server_id` - Server ID to use for the agent (See [https://blackfire.io/account/agents])
+`server_token` - Server Token to use for the agent (See [https://blackfire.io/account/agents])
+`log_level` - Log verbosity level (4: debug, 3: info, 2: warning, 1: error). Default `1`
+`socket` - Where the socket the agent will listen to. Default `unix:///var/run/blackfire/agent.sock`
 
-If you aren't using changelog, put your release notes here (though you should
-consider using changelog). You may also add any additional sections you feel are
-necessary or important to include here. Please use the `## ` header.
+#### Available parameters for blackfire::agent class
+
+`version` - Which version of the agent to install. Default last version.
+`ca_cert` - PEM encoded certicates
+`collector` - URL of Blackfire's data collector. Default 'https://blackfire.io'
+`http_proxy` - Http proxy to use
+`https_proxy` - Https proxy to use
+`log_file` - The path of the log file. Use `stderr` to log to stderr. Default `stderr`
+`spec` - The path to the json specifications file
+
+`service_manage` - Manage the service. Default is `true` 
+`service_ensure` - Default is `present`
+
+The following parameters inherited from the main class, and can be overriden:
+`server_id`, `server_token`, `log_level`, `socket`
+
+#### Available parameters for blackfire::php class
+
+`version` - Which version of the probe to install. Default last version.
+`log_file` - The path of the log file.
+`agent_timeout` - The agent timeout. Default `0.25`
+
+The following parameters inherited from the main class, and can be overriden:
+`server_id`, `server_token`, `log_level`, `socket`
+

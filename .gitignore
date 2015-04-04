@@ -1,3 +1,5 @@
 .idea/
+.vagrant/
 pkg/
 Gemfile.lock
+log

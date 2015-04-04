@@ -8,7 +8,7 @@ class blackfire::agent::config inherits blackfire::agent {
     path    => $ini_path,
     section => $section,
     setting => 'ca-cert',
-    value   => $ca_cert
+    value   => $agent['ca_cert']
   }
 
   ini_setting { 'collector':
@@ -16,7 +16,7 @@ class blackfire::agent::config inherits blackfire::agent {
     path    => $ini_path,
     section => $section,
     setting => 'collector',
-    value   => $collector
+    value   => $agent['collector']
   }
 
   ini_setting { 'http_proxy':
@@ -24,7 +24,7 @@ class blackfire::agent::config inherits blackfire::agent {
     path    => $ini_path,
     section => $section,
     setting => 'http-proxy',
-    value   => $http_proxy
+    value   => $agent['http_proxy']
   }
 
   ini_setting { 'https_proxy':
@@ -32,7 +32,7 @@ class blackfire::agent::config inherits blackfire::agent {
     path    => $ini_path,
     section => $section,
     setting => 'https-proxy',
-    value   => $https_proxy
+    value   => $agent['https_proxy']
   }
 
   ini_setting { 'log-file':
@@ -40,7 +40,7 @@ class blackfire::agent::config inherits blackfire::agent {
     path    => $ini_path,
     section => $section,
     setting => 'log-file',
-    value   => $log_file
+    value   => $agent['log_file']
   }
 
   ini_setting { 'log-level':
@@ -48,7 +48,7 @@ class blackfire::agent::config inherits blackfire::agent {
     path    => $ini_path,
     section => $section,
     setting => 'log-level',
-    value   => $log_level
+    value   => $agent['log_level']
   }
 
   ini_setting { 'server-id':
@@ -56,7 +56,7 @@ class blackfire::agent::config inherits blackfire::agent {
     path    => $ini_path,
     section => $section,
     setting => 'server-id',
-    value   => $server_id
+    value   => $agent['server_id']
   }
 
   ini_setting { 'server-token':
@@ -64,7 +64,7 @@ class blackfire::agent::config inherits blackfire::agent {
     path    => $ini_path,
     section => $section,
     setting => 'server-token',
-    value   => $server_token
+    value   => $agent['server_token']
   }
 
   ini_setting { 'socket':
@@ -72,7 +72,7 @@ class blackfire::agent::config inherits blackfire::agent {
     path    => $ini_path,
     section => $section,
     setting => 'socket',
-    value   => $socket
+    value   => $agent['socket']
   }
 
   ini_setting { 'spec':
@@ -80,7 +80,7 @@ class blackfire::agent::config inherits blackfire::agent {
     path    => $ini_path,
     section => $section,
     setting => 'spec',
-    value   => $spec
+    value   => $agent['spec']
   }
 
 }

@@ -1,12 +1,12 @@
 class blackfire::agent::service inherits blackfire::agent {
 
-  if ! ($service_ensure in ['running', 'stopped']) {
+  if ! ($agent['service_ensure'] in ['running', 'stopped']) {
     fail('service_ensure parameter must be running or stopped')
   }
 
-  if $service_manage {
+  if $agent['manage_service'] {
     service { 'blackfire-agent':
-      ensure => $service_ensure,
+      ensure => $agent['service_ensure'],
     }
   }
 

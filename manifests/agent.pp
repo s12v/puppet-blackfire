@@ -1,43 +1,46 @@
-class blackfire::agent (
-  $version = $blackfire::agent::params::version,
-  $ca_cert = $blackfire::agent::params::ca_cert,
-  $collector = $blackfire::agent::params::collector,
-  $http_proxy = $blackfire::agent::params::http_proxy,
-  $https_proxy = $blackfire::agent::params::https_proxy,
-  $log_file = $blackfire::agent::params::log_file,
-  $spec = $blackfire::agent::params::spec,
+class blackfire::agent inherits blackfire {
 
-  $service_manage = $blackfire::agent::params::service_manage,
-  $service_ensure = $blackfire::agent::params::service_ensure,
-
-  # inherited
-  $server_id = $blackfire::agent::params::server_id,
-  $server_token = $blackfire::agent::params::server_token,
-  $log_level = $blackfire::agent::params::log_level,
-  $socket = $blackfire::agent::params::socket
-) inherits blackfire::agent::params {
-
-  validate_string($version)
-  validate_string($ca_cert)
-  if $ca_cert {
-    validate_absolute_path($ca_cert)
+  $default_parameters = {
+    manage => true,
+    version => 'latest',
+    manage_service => true,
+    service_ensure => 'running',
+    server_id => $server_id,
+    server_token => $server_token,
+    socket => 'unix:///var/run/blackfire/agent.sock',
+    log_file => 'stderr',
+    log_level => 1,
+    collector => 'https://blackfire.io',
+    http_proxy => '',
+    https_proxy => '',
+    ca_cert => '',
+    spec => '',
   }
-  validate_string($collector)
-  validate_string($http_proxy)
-  validate_string($https_proxy)
-  validate_string($log_file)
-  validate_string($spec)
-  if $spec {
-    validate_absolute_path($spec)
+  $agent = merge($default_parameters, $agent)
+
+  validate_bool($agent['manage'])
+  validate_string($agent['version'])
+  validate_bool($agent['manage_service'])
+  validate_string($agent['running'])
+  validate_string($agent['server_id'])
+  validate_string($agent['server_token'])
+  validate_string($agent['socket'])
+  validate_string($agent['log_file'])
+  if $agent['log_level'] < 1 or $agent['log_level'] > 4 {
+    fail 'Ivalid log_level. Valid levels are: 4 - debug, 3 - info, 2 - warning, 1 - error'
   }
+  validate_string($agent['collector'])
+  validate_string($agent['http_proxy'])
+  validate_string($agent['https_proxy'])
+  validate_string($agent['ca_cert'])
+  validate_string($agent['spec'])
 
-  validate_bool($service_manage)
-  validate_string($service_ensure)
-
-  anchor { 'blackfire::agent::begin': } ->
-      class { '::blackfire::agent::install': } ->
-      class { '::blackfire::agent::config': } ~>
-      class { '::blackfire::agent::service': } ->
-  anchor { 'blackfire::agent::end': }
+  if $agent['manage'] == true {
+    anchor { '::blackfire::agent::begin': } ->
+    class { '::blackfire::agent::install': } ->
+    class { '::blackfire::agent::config': } ~>
+    class { '::blackfire::agent::service': } ->
+    anchor { '::blackfire::agent::end': }
+  }
 
 }

@@ -19,7 +19,7 @@ class blackfire::php::config inherits blackfire::php {
     path    => $ini_path,
     section => $section,
     setting => 'blackfire.agent_socket',
-    value   => $socket
+    value   => $php['agent_socket']
   }
 
   ini_setting { 'blackfire.agent_timeout':
@@ -27,7 +27,7 @@ class blackfire::php::config inherits blackfire::php {
     path    => $ini_path,
     section => $section,
     setting => 'blackfire.agent_timeout',
-    value   => $agent_timeout
+    value   => $php['agent_timeout']
   }
 
   ini_setting { 'blackfire.server_id':
@@ -35,7 +35,7 @@ class blackfire::php::config inherits blackfire::php {
     path    => $ini_path,
     section => $section,
     setting => 'blackfire.server_id',
-    value   => $server_id
+    value   => $php['server_id']
   }
 
   ini_setting { 'blackfire.server_token':
@@ -43,7 +43,7 @@ class blackfire::php::config inherits blackfire::php {
     path    => $ini_path,
     section => $section,
     setting => 'blackfire.server_token',
-    value   => $server_token
+    value   => $php['server_token']
   }
 
   ini_setting { 'blackfire.log_level':
@@ -51,7 +51,7 @@ class blackfire::php::config inherits blackfire::php {
     path    => $ini_path,
     section => $section,
     setting => 'blackfire.log_level',
-    value   => $log_level
+    value   => $php['log_level']
   }
 
   ini_setting { 'blackfire.log_file':
@@ -59,7 +59,7 @@ class blackfire::php::config inherits blackfire::php {
     path    => $ini_path,
     section => $section,
     setting => 'blackfire.log_file',
-    value   => $log_file
+    value   => $php['log_file']
   }
 
 }

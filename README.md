@@ -64,8 +64,8 @@ class { 'blackfire':
 #### Available parameters for blackfire class
 
  - `manage_repo` - Manage Blackfire repository. Default is `true`
- - `server_id` - Server ID to use for the agent (See [https://blackfire.io/account/agents])
- - `server_token` - Server Token to use for the agent (See [https://blackfire.io/account/agents])
+ - `server_id` - Server ID to use for the agent (See https://blackfire.io/account/credentials)
+ - `server_token` - Server Token to use for the agent (See https://blackfire.io/account/credentials)
  - `agent` - Configuration for Blackfire Agent
  - `php` - Configuration for Blackfire PHP extension
 

@@ -2,7 +2,7 @@ sudo: false
 language: ruby
 bundler_args: --no-deployment
 script:
-  - bundle exec rake syntax
+  - bundle exec rake metadata
   - bundle exec rake syntax
   - bundle exec rake lint
   - bundle exec rake spec

@@ -63,43 +63,31 @@ class { 'blackfire':
 
 #### Available parameters for blackfire class
 
- - `manage_repo` - Manage Blackfire repository. Default is `true`
+ - `manage_repo` - Manage Blackfire repository. Default is *true*
  - `server_id` - Server ID to use for the agent (See https://blackfire.io/account/credentials)
  - `server_token` - Server Token to use for the agent (See https://blackfire.io/account/credentials)
  - `agent` - Configuration for Blackfire Agent
+   - `manage` - Manage Agent. Default is *true*
+   - `manage_service` - Manage Agent service. Default is *true*
+   - `service_ensure` - Default is *running*
+   - `version` - Which version of the agent to install. Default is *latest*
+   - `log_file` - The path of the log file. Use "stderr" to log to stderr. Default is *stderr*
+   - `log_level` - Log verbosity level (4: debug, 3: info, 2: warning, 1: error). Default is *1*
+   - `socket` - The socket the agent will listen to. Default is *unix:///var/run/blackfire/agent.sock*
+   - `http_proxy` - Http proxy to use
+   - `https_proxy` - Https proxy to use
+   - `ca_cert` - PEM encoded certicates
+   - `collector` - URL of Blackfire's data collector. Default is *https://blackfire.io*
+   - `spec` - The path to the json specifications file
  - `php` - Configuration for Blackfire PHP extension
+   - `manage` - Manage PHP extension. Default is *true*
+   - `version` - Which version of the probe to install. Default is *latest*
+   - `log_file` - The path of the log file.
+   - `log_level` - Log verbosity level (4: debug, 3: info, 2: warning, 1: error). Default is *1*
+   - `agent_socket` - The agent socket. Default is *unix:///var/run/blackfire/agent.sock*
+   - `agent_timeout` - The agent timeout. Default *0.25*
 
-#### Available parameters for blackfire::agent class
-
- - `manage` - Manage Agent. Default is `true`
- - `manage_service` - Manage Agent service. Default is `true`
- - `service_ensure` - Default is `running`
- - `version` - Which version of the agent to install. Default is `latest`
-
- - `log_file` - The path of the log file. Use `stderr` to log to stderr. Default is `stderr`
- - `log_level` - Log verbosity level (4: debug, 3: info, 2: warning, 1: error). Default is `1`
- - `socket` - Where the socket the agent will listen to. Default is `unix:///var/run/blackfire/agent.sock`
- - `http_proxy` - Http proxy to use
- - `https_proxy` - Https proxy to use
- - `ca_cert` - PEM encoded certicates
- - `collector` - URL of Blackfire's data collector. Default is 'https://blackfire.io'
- - `spec` - The path to the json specifications file
-
-The following parameters inherited from the main class, and can be overriden: `server_id`, `server_token`
-
-#### Available parameters for blackfire::php class
-
- - `manage` - Manage PHP extension. Default is `true`
- - `version` - Which version of the probe to install. Default is `latest`
-
- - `log_file` - The path of the log file.
- - `log_level` - Log verbosity level (4: debug, 3: info, 2: warning, 1: error). Default is `1`
- - `agent_socket` - Where the socket the agent will listen to. Default is `unix:///var/run/blackfire/agent.sock`
- - `agent_timeout` - The agent timeout. Default `0.25`
-
-The following parameters inherited from the main class, and can be overriden: `server_id`, `server_token`
-
-## Testing
+## Module testing
 
  - `bundle exec rake metadata` - Validate metadata.json file
  - `bundle exec rake syntax` - Syntax check Puppet manifests and templates 

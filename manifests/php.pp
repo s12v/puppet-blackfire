@@ -25,7 +25,7 @@ class blackfire::php inherits blackfire {
 
   anchor { '::blackfire::php::begin': } ->
     class { '::blackfire::php::install': } ->
-    class { '::blackfire::php::config': } ->
+    class { '::blackfire::php::config': } ~>
   anchor { '::blackfire::php::end': }
 
 }

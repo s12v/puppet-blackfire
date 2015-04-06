@@ -40,7 +40,7 @@ class blackfire::agent inherits blackfire {
     anchor { '::blackfire::agent::begin': } ->
     class { '::blackfire::agent::install': } ->
     class { '::blackfire::agent::config': } ~>
-    class { '::blackfire::agent::service': } ->
+    class { '::blackfire::agent::service': } ~>
     anchor { '::blackfire::agent::end': }
   }
 

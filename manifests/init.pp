@@ -18,8 +18,8 @@ class blackfire (
 
   anchor { '::blackfire::begin': } ->
   class { '::blackfire::repo': } ->
-  class { '::blackfire::agent': } ->
-  class { '::blackfire::php': } ->
+  class { '::blackfire::agent': } ~>
+  class { '::blackfire::php': } ~>
   anchor { '::blackfire::end': }
 
 }

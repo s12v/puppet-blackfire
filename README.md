@@ -8,13 +8,9 @@ Puppet module for installing, configuring and managing [Blackfire PHP profiler](
 
 This module is currently tested on:
 
- - Ubuntu 14.04
- - Ubuntu 12.04
- - Ubuntu 10.04
- - Centos 7.0
- - Centos 6.6
- - Debian 7.8
- - Debian 6.0
+ - Ubuntu (14.04, 12.04, 10.04)
+ - Centos (7.0, 6.6)
+ - Debian (7.8, 6.0)
 
 It may work on other distros.
 
@@ -23,6 +19,7 @@ It may work on other distros.
 ### What blackfire affects
 
 * The module adds blackfire repository and overwrites blackfire configuration file.
+* It _does not_ restart any service, you have to do it manually.
 
 ## Usage
 
@@ -30,11 +27,13 @@ The module includes a single public class `blackfire`.
 
 ### Minimal configuration
 
-You need to provide at least `server_id` and `server_token` parameters:
+You need to provide at least `server_id` and `server_token` parameters.
+Also you might want to subscribe your service to be restarted when configuration has changed:
 ```puppet
 class { 'blackfire':
 	server_id    => 'b54114a9-df8a-563b-8ba3-e5457155010e',
-	server_token => '7315b1cf617bf51575ba463e813156ed97c85d8ca5c5691db37bbfe36a622a4f'
+	server_token => '7315b1cf617bf51575ba463e813156ed97c85d8ca5c5691db37bbfe36a622a4f',
+    notify => Service['php5-fpm']
 }
 ```
 You can get these parameters on https://blackfire.io/account/credentials.

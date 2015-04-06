@@ -20,9 +20,9 @@ It may work on other distros.
 
 ## Setup
 
-### What cat affects
+### What blackfire affects
 
-* `blackfire` adds blackfire repository and overwrites blackfire configuration file.
+* The module adds blackfire repository and overwrites blackfire configuration file.
 
 ## Usage
 

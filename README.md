@@ -14,6 +14,7 @@ This module is currently tested on:
  - Centos 7.0
  - Centos 6.6
  - Debian 7.8
+ - Debian 6.0
 
 It may work on other distros.
 

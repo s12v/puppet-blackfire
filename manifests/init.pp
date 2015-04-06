@@ -1,3 +1,4 @@
+# Installs and configures Blackfire agent and PHP extension
 class blackfire (
   $server_id = $blackfire::params::server_id,
   $server_token = $blackfire::params::server_token,

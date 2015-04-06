@@ -1,6 +1,6 @@
 {
   "name": "s12v-blackfire",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "author": "Sergey Novikov",
   "summary": "Module for managing and configuring Blackfire PHP Profiler",
   "license": "Apache-2.0",

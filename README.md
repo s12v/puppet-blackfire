@@ -10,6 +10,7 @@ This module is currently tested on:
 
  - Ubuntu 14.04
  - Ubuntu 12.04
+ - Ubuntu 10.04
  - Centos 7.0
  - Centos 6.6
  - Debian 7.8
@@ -93,6 +94,9 @@ class { 'blackfire':
  - `bundle exec rake syntax` - Syntax check Puppet manifests and templates 
  - `bundle exec rake lint` - Check puppet manifests with puppet-lint / Run puppet-lint
  - `bundle exec rake spec` - Run spec tests in a clean fixtures directory
+
+### Acceptance testing with beaker
+
  - `bundle exec rake beaker_nodes` - List available beaker nodesets
- - `bundle exec rake beaker` - Run beaker acceptance tests (default node)
- - `BEAKER_set=centos-70-x64 bundle exec rake beaker` - Run beaker acceptance tests for the node
+ - `BLACKFIRE_SERVER_ID=... BLACKFIRE_SERVER_TOKEN=... bundle exec rake beaker` - Run beaker acceptance tests (default nodeset)
+ - `BEAKER_set=centos-70-x64 BLACKFIRE_SERVER_ID=... BLACKFIRE_SERVER_TOKEN=... bundle exec rake beaker` - Run beaker acceptance tests for the nodeset

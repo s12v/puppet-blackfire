@@ -1,8 +1,13 @@
+# Configures the PHP extension
 class blackfire::php::config inherits blackfire::php {
 
   case $::osfamily {
     'debian': {
-      $ini_path = '/etc/php5/mods-available/blackfire.ini'
+      if $::operatingsystem == 'Ubuntu' and $::operatingsystemrelease < '14.04' {
+        $ini_path = '/etc/php5/conf.d/blackfire.ini'
+      } else {
+        $ini_path = '/etc/php5/mods-available/blackfire.ini'
+      }
     }
     'redhat': {
       $ini_path = '/etc/php.d/zz-blackfire.ini'
@@ -19,7 +24,7 @@ class blackfire::php::config inherits blackfire::php {
     path    => $ini_path,
     section => $section,
     setting => 'blackfire.agent_socket',
-    value   => $php['agent_socket']
+    value   => $::blackfire::php::params['agent_socket']
   }
 
   ini_setting { 'blackfire.agent_timeout':
@@ -27,7 +32,7 @@ class blackfire::php::config inherits blackfire::php {
     path    => $ini_path,
     section => $section,
     setting => 'blackfire.agent_timeout',
-    value   => $php['agent_timeout']
+    value   => $::blackfire::php::params['agent_timeout']
   }
 
   ini_setting { 'blackfire.server_id':
@@ -35,7 +40,7 @@ class blackfire::php::config inherits blackfire::php {
     path    => $ini_path,
     section => $section,
     setting => 'blackfire.server_id',
-    value   => $php['server_id']
+    value   => $::blackfire::php::params['server_id']
   }
 
   ini_setting { 'blackfire.server_token':
@@ -43,7 +48,7 @@ class blackfire::php::config inherits blackfire::php {
     path    => $ini_path,
     section => $section,
     setting => 'blackfire.server_token',
-    value   => $php['server_token']
+    value   => $::blackfire::php::params['server_token']
   }
 
   ini_setting { 'blackfire.log_level':
@@ -51,7 +56,7 @@ class blackfire::php::config inherits blackfire::php {
     path    => $ini_path,
     section => $section,
     setting => 'blackfire.log_level',
-    value   => $php['log_level']
+    value   => $::blackfire::php::params['log_level']
   }
 
   ini_setting { 'blackfire.log_file':
@@ -59,7 +64,7 @@ class blackfire::php::config inherits blackfire::php {
     path    => $ini_path,
     section => $section,
     setting => 'blackfire.log_file',
-    value   => $php['log_file']
+    value   => $::blackfire::php::params['log_file']
   }
 
 }

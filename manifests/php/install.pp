@@ -1,5 +1,6 @@
+# Installs the PHP extension
 class blackfire::php::install inherits blackfire::php {
   package { 'blackfire-php':
-    ensure => $php['version'],
+    ensure => $::blackfire::php::params['version'],
   }
 }

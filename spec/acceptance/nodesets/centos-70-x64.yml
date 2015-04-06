@@ -9,3 +9,4 @@ HOSTS:
 CONFIG:
   log_level: verbose
   type: foss
+  php_cli_package: php-cli

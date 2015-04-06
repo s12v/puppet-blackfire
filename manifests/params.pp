@@ -1,3 +1,4 @@
+# Default parameters
 class blackfire::params {
   $server_id = ''
   $server_token = ''

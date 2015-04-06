@@ -1,6 +1,7 @@
+# Manages the repository
 class blackfire::repo inherits blackfire {
 
-  if $manage_repo == true {
+  if $::blackfire::manage_repo == true {
     case $::osfamily {
       'debian': {
         if !defined(Class['apt']) {
@@ -11,7 +12,7 @@ class blackfire::repo inherits blackfire {
           location    => 'http://packages.blackfire.io/debian',
           release     => 'any',
           repos       => 'main',
-          key         => '418A7F2FB0E1E6E7EABF6FE8C2E73424D59097AB',
+          key         => 'D59097AB',
           key_source  => 'https://packagecloud.io/gpg.key',
           include_src => false,
         }

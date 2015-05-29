@@ -1,6 +1,8 @@
 Puppet module for installing, configuring and managing [Blackfire PHP profiler](https://blackfire.io/).
 
 [![Build Status](https://travis-ci.org/s12v/puppet-blackfire.svg?branch=master)](https://travis-ci.org/s12v/puppet-blackfire)
+[![Puppet Forge](https://img.shields.io/puppetforge/dt/s12v/blackfire.svg)](https://forge.puppetlabs.com/s12v/blackfire)
+
 
 # blackfire
 

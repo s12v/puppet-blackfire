@@ -9,7 +9,7 @@ class blackfire::repo inherits blackfire {
         }
 
         if defined('apt::setting') {
-        # apt >= 2.0
+          # apt >= 2.0
           apt::source { 'blackfire':
             location => 'http://packages.blackfire.io/debian',
             release  => 'any',
@@ -19,9 +19,11 @@ class blackfire::repo inherits blackfire {
               id     => '418A7F2FB0E1E6E7EABF6FE8C2E73424D59097AB',
             },
           }
-          Exec['apt_update'] -> Package <||>
+          # trigger apt-get update before installing packages
+          Exec['apt_update'] -> Class['::blackfire::agent']
+          Exec['apt_update'] -> Class['::blackfire::php']
         } else {
-          # apt >= 1.x
+          # apt >= 1.x < 2.0
           apt::source { 'blackfire':
             location    => 'http://packages.blackfire.io/debian',
             release     => 'any',

@@ -1,7 +1,6 @@
 # Configures the PHP extension
 class blackfire::php::config inherits blackfire::php {
-#  notify($::operatingsystemrelease)
-  
+
   case $::osfamily {
     'debian': {
       if (

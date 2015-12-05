@@ -1,3 +1,10 @@
+# 1.4.0 (2015.12.05)
+
+* Puppet 4 compatibility
+* Handle log_level passed as a string (@jtreminio)
+* Added apt to manifest as a dependency 
+
+
 # 1.3.0 (2015.06.01)
 
 * Added support for puppetlabs-apt 2.0

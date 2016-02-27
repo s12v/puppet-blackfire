@@ -26,7 +26,7 @@ Puppet module for installing, configuring and managing [Blackfire PHP profiler](
 * The module adds blackfire repository and overwrites blackfire configuration file.
 * It _does not_ restart any service, you have to do it manually.
 
-### Setup Requirements
+### Setup requirements
 
 Make sure blackfire is installed after PHP.
 

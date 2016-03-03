@@ -1,3 +1,11 @@
+# 1.4.2 (2016.03.03)
+
+* Bound PE dependency
+
+# 1.4.1 (2016.02.27)
+
+* Update README and bound apt dependency
+
 # 1.4.0 (2015.12.05)
 
 * Puppet 4 compatibility

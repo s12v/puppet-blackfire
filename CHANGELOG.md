@@ -1,3 +1,7 @@
+# 1.5.0 (2016.03.07)
+
+* Added new parameter ini_path (@Schnitzel)
+
 # 1.4.2 (2016.03.03)
 
 * Bound PE dependency

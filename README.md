@@ -106,6 +106,7 @@ class { 'blackfire':
    - `log_level` - Log verbosity level (4: debug, 3: info, 2: warning, 1: error). Default is *1*
    - `manage` - Manage PHP extension. Default is *true*
    - `version` - Which version of the probe to install. Default is *latest*
+   - `ini_path` - Path of the blackfire.ini file to be generated. If not set, will try find out the path by installed PHP Version. Default is *empty*
  - `server_id` - Server ID to use for the agent (See https://blackfire.io/account/credentials)
  - `server_token` - Server Token to use for the agent (See https://blackfire.io/account/credentials)
 

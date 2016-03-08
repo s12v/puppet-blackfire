@@ -12,7 +12,7 @@ class blackfire::php inherits blackfire {
     agent_timeout => 0.25,
     ini_path => '',
   }
-  $params = merge($default_params, $::blackfire::params)
+  $params = merge($default_params, $::blackfire::php)
   $log_level = 0 + $params['log_level']
 
   validate_bool($params['manage'])

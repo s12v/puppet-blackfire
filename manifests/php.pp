@@ -25,10 +25,10 @@ class blackfire::php inherits blackfire {
   if $log_level < 1 or $log_level > 4 {
     fail 'Ivalid log_level. Valid levels are: 4 - debug, 3 - info, 2 - warning, 1 - error'
   }
-
-  anchor { '::blackfire::php::begin': } ->
-    class { '::blackfire::php::install': } ->
-    class { '::blackfire::php::config': } ~>
-  anchor { '::blackfire::php::end': }
-
+  if $params['manage'] == true {
+    anchor { '::blackfire::php::begin': } ->
+      class { '::blackfire::php::install': } ->
+      class { '::blackfire::php::config': } ~>
+    anchor { '::blackfire::php::end': }
+  }
 }

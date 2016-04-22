@@ -1,10 +1,14 @@
+# 1.5.2 (2016.04.22)
+
+* Fix for `manage` parameter for `blackfire::php` (@Schnitzel)
+
 # 1.5.1 (2016.03.08)
 
-* Hotfix for ini_path (@Schnitzel)
+* Hotfix for `ini_path` (@Schnitzel)
 
 # 1.5.0 (2016.03.07)
 
-* Added new parameter ini_path (@Schnitzel)
+* Added new parameter `ini_path` (@Schnitzel)
 
 # 1.4.2 (2016.03.03)
 
@@ -17,7 +21,7 @@
 # 1.4.0 (2015.12.05)
 
 * Puppet 4 compatibility
-* Handle log_level passed as a string (@jtreminio)
+* Handle `log_level` passed as a string (@jtreminio)
 * Added apt to manifest as a dependency 
 
 

@@ -2,3 +2,5 @@
 .vagrant/
 pkg/
 log
+spec/fixtures
+

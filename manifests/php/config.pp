@@ -4,7 +4,9 @@ class blackfire::php::config inherits blackfire::php {
   if empty($::blackfire::php::params['ini_path']) {
     case $::osfamily {
       'debian': {
-        if (
+        if ($::operatingsystem == 'Ubuntu' and $::operatingsystemrelease >= '16.04') {
+          $ini_path = '/etc/php/7.0/mods-available/blackfire.ini'
+        } elsif (
           ($::operatingsystem == 'Ubuntu' and $::operatingsystemrelease < '14.04')
           or ($::operatingsystem == 'Debian' and $::operatingsystemmajrelease < '7')
         ) {

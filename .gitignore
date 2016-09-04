@@ -1,5 +1,6 @@
 .idea/
 .vagrant/
+Gemfile.lock
 pkg/
 log
 spec/fixtures

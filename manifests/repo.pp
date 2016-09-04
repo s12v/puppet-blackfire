@@ -35,7 +35,7 @@ class blackfire::repo inherits blackfire {
         }
       }
       'redhat': {
-        if ($::clientversion < 3.5) {
+        if ("${::clientversion} " < '3.5 ') {
           $sslverify = 'True'
         } else {
           $sslverify = 1

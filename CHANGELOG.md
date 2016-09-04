@@ -1,3 +1,7 @@
+# 1.6.0 (2016.09.04)
+
+* Ubuntu 16.04 support
+
 # 1.5.2 (2016.04.22)
 
 * Fix for `manage` parameter for `blackfire::php` (@Schnitzel)

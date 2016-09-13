@@ -114,7 +114,7 @@ class { 'blackfire':
 
 This module is currently tested on:
 
- - Ubuntu (14.04, 12.04, 10.04)
+ - Ubuntu (16.04, 14.04, 12.04, 10.04)
  - Centos (7.0, 6.6)
  - Debian (8.0, 7.8, 6.0)
 

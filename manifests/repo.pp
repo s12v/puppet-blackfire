@@ -15,8 +15,8 @@ class blackfire::repo inherits blackfire {
             release  => 'any',
             repos    => 'main',
             key      => {
-              source => 'https://packagecloud.io/gpg.key',
-              id     => '418A7F2FB0E1E6E7EABF6FE8C2E73424D59097AB',
+              source => 'https://packages.blackfire.io/gpg.key',
+              id     => '9B64BFB189197267DD269B29DFD7480747312329',
             },
           }
           # trigger apt-get update before installing packages
@@ -28,8 +28,8 @@ class blackfire::repo inherits blackfire {
             location    => 'http://packages.blackfire.io/debian',
             release     => 'any',
             repos       => 'main',
-            key         => 'D59097AB',
-            key_source  => 'https://packagecloud.io/gpg.key',
+            key         => '47312329',
+            key_source  => 'https://packages.blackfire.io/gpg.key',
             include_src => false,
           }
         }

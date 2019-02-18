@@ -39,11 +39,11 @@ class blackfire::agent inherits blackfire {
   validate_string($params['spec'])
 
   if $params['manage'] == true {
-    anchor { '::blackfire::agent::begin': } ->
-    class { '::blackfire::agent::install': } ->
-    class { '::blackfire::agent::config': } ~>
-    class { '::blackfire::agent::service': } ~>
-    anchor { '::blackfire::agent::end': }
+    anchor { '::blackfire::agent::begin': }
+    -> class { '::blackfire::agent::install': }
+    -> class { '::blackfire::agent::config': }
+    ~> class { '::blackfire::agent::service': }
+    ~> anchor { '::blackfire::agent::end': }
   }
 
 }

@@ -16,10 +16,10 @@ class blackfire (
   validate_hash($php)
   validate_bool($manage_repo)
 
-  anchor { '::blackfire::begin': } ->
-  class { '::blackfire::repo': } ->
-  class { '::blackfire::agent': } ~>
-  class { '::blackfire::php': } ~>
-  anchor { '::blackfire::end': }
+  anchor { '::blackfire::begin': }
+  -> class { '::blackfire::repo': }
+  -> class { '::blackfire::agent': }
+  ~> class { '::blackfire::php': }
+  ~> anchor { '::blackfire::end': }
 
 }

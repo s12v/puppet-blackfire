@@ -14,7 +14,7 @@ matrix:
   fast_finish: true
   include:
   - rvm: 2.5
-    env: PUPPET_VERSION="~> 5"
+    env: PUPPET_VERSION="~> 5" DEPLOY="yes"
   - rvm: 2.4
     env: PUPPET_VERSION="~> 5.4"
   - rvm: 2.3.1

@@ -30,7 +30,7 @@ before_deploy:
 deploy:
   provider: releases
   api-key:
-      secure: MGxLG561b5JH6nEi2Pbd1BfD/rGH9vzCAs6bW/LZg68z9y7+i4l66otBz9I9WZWGY/smXKWoO8L/VTLS6yvv2zgSIbJkop1h5/1+CDQRywZhaxAiJFMmONp/rTSSmL+vsBDftbqvtTsQBVb0ewhCAf5LKC8XXQKldvhjz813Pt2O+TRp7MF6loGaDMbSMeKiSgrprcUc/6YAohP3bso7Q9OAxpKQGINg1kuZxqVGUYyOlFzxp4IFiEOo+kHZuqq9aliQbn6qcPYxVFiXk1h6NX/Ibgydj/MuXTZa3Y2t6wHllVOY1scB3KCZGYEEWT+hlojA/RdU0SEUxtxnitozkcO7S19mYnvyvHByjJ9ZTNCXtt+ELsh7upCCrLRl2CB++p6HyCk2crAkiGEPIgRSU9Wy67IS+YsdMVJk6+Uy7JS1tJraAJdgKnAlwte1aQNvbLphANrqm3+gcZxulvIxDUGRQISiofL+kzXL+G3bYkDMQu62vj2IzAZKqdVXZ/QRTMrIwrNYEH6FBOIlTT1THj3+mz6kz7RVwj298mVEyqWODycJc+u/ZvnArC7aoCnmlop/tFaUJTDESDAiVPF3c8b4wAx16lariwK52+r6RPyNjmEDFKjJfwbOIPll0tOYvjWOwZIozO/OoeWGbeug2NWdGGJ9JAjEV3n7m00izq8=
+      secure: c1nsisXrYLskSU2bm8n4t3m6rS5dr9W/xy2TVaRTPMwGTMJQZT3qwjLHXtxIu3OLqpZRTZJ68H9XXt5NQe7QjyGUqgpaVE2TaSAl0+qVa9lwlhWkQ9FESN6ZPbBIeh4zAtgRSpayNNzwnEzmEJGx+PVQJWqFlDOblKCbHSao6ec=
   file: "$(ls $TRAVIS_BUILD_DIR/pkg/s12v-blackfire-*.tar.gz | head -n 1)"
   skip_cleanup: true
   on:

@@ -1,3 +1,7 @@
+# 1.6.1 (2019.02.18)
+
+* apt keys changed
+
 # 1.6.0 (2016.09.04)
 
 * Ubuntu 16.04 support

@@ -1,8 +1,7 @@
 # Manages the repository
 class blackfire::repo inherits blackfire {
-
-  if $::blackfire::manage_repo == true {
-    case $::osfamily {
+  if $blackfire::manage_repo == true {
+    case $facts['os']['family'] {
       'debian': {
         if !defined(Class['apt']) {
           class { 'apt': }
@@ -20,8 +19,8 @@ class blackfire::repo inherits blackfire {
             },
           }
           # trigger apt-get update before installing packages
-          Exec['apt_update'] -> Class['::blackfire::agent']
-          Exec['apt_update'] -> Class['::blackfire::php']
+          Exec['apt_update'] -> Class['blackfire::agent']
+          Exec['apt_update'] -> Class['blackfire::php']
         } else {
           # apt >= 1.x < 2.0
           apt::source { 'blackfire':
@@ -35,7 +34,7 @@ class blackfire::repo inherits blackfire {
         }
       }
       'redhat': {
-        if ("${::clientversion} " < '3.5 ') {
+        if ("${facts['clientversion']} " < '3.5 ') {
           $sslverify = 'True'
         } else {
           $sslverify = 1
@@ -52,9 +51,8 @@ class blackfire::repo inherits blackfire {
         }
       }
       default: {
-        fail("\"${module_name}\" provides no repository information for OSfamily \"${::osfamily}\"")
+        fail("\"${module_name}\" provides no repository information for OSfamily \"${facts['os']['family']}\"")
       }
     }
   }
-
 }
